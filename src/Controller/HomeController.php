@@ -23,7 +23,7 @@ class HomeController extends AbstractController
      */
     public function redirectHome()
     {
-        return $this->redirectToRoute('homepage', ['_locale' => 'fr']);
+        return $this->redirectToRoute('homepage', ['_locale' => 'en']);
     }
 
     /**
