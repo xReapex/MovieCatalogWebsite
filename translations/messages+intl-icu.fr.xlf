@@ -25,6 +25,14 @@
         <source>French</source>
         <target>Français</target>
       </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="byAvVKe" resname="List">
+        <source>List</source>
+        <target>Liste</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
