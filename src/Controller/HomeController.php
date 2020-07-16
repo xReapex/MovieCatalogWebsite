@@ -39,12 +39,12 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/", name="homepage")
+     * @Route("/{_locale<%app.supported_locales%>}/",  name="homepage")
      * @return Response
      */
     public function showHome()
     {
-        return $this->render('home/show_home.html.twig');
+        return $this->render('base.html.twig');
     }
 
     /**
