@@ -5,19 +5,22 @@
 
     <h1 align="center">Users list</h1>
 
-    <div class="row">
-        {% for user in users %}
-            <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
-                <div class="card" style="width: 18rem; margin: 14px; margin-left: 5px;">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>User's ID:</b> {{ user.id }}</h5>
-                        <p class="card-text"><b>Username:</b> {{ user.username }} <br><b>Password:</b> {{ user.password | u.truncate(15, '...') }}</p>
-                        <a href="{{ path('user_delete', {'id': user.id}) }}"><button type="button" class="btn btn-danger">Delete</button></a>
-                        <a href="{{ path('user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
+    <div class="ml-5">
+        <div class="row">
+            {% for user in users %}
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+                    <div class="card" style="width: 18rem; margin: 14px; margin-left: 5px;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>User's ID:</b> {{ user.id }}</h5>
+                            <p class="card-text"><b>Username:</b> {{ user.username }} <br><b>Password:</b> {{ user.password | u.truncate(15, '...') }}</p>
+                            <a href="{{ path('user_delete', {'id': user.id}) }}"><button type="button" class="btn btn-danger">Delete</button></a>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
+
 {% endblock %}
 

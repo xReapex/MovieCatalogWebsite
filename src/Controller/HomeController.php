@@ -19,6 +19,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Twig\Environment;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
+use Symfony\Component\Notifier\Notification\Notification;
+use Symfony\Component\Notifier\NotifierInterface;
 
 class HomeController extends AbstractController
 {
@@ -51,9 +53,10 @@ class HomeController extends AbstractController
      * @Route("/{_locale<%app.supported_locales%>}/user/register", name="register_user")
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
+     * @param NotifierInterface $notifier
      * @return Response
      */
-    public function createUser(Request $request, UserPasswordEncoderInterface $encoder)
+    public function createUser(Request $request, UserPasswordEncoderInterface $encoder, NotifierInterface $notifier)
     {
 
         $user = new User();
