@@ -55,11 +55,12 @@ class HomeController extends AbstractController
      */
     public function createUser(Request $request, UserPasswordEncoderInterface $encoder)
     {
+
         $user = new User();
         $form = $this->createForm(FormType::class, $user);
 
         $form
-            ->add('Username', TextType::class)
+            ->add('Username', TextType::class, ['empty_data' => 'Default value'])
             ->add('Email', EmailType::class)
             ->add('Password', PasswordType::class)
             ->add('Submit', SubmitType::class);
