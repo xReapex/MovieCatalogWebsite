@@ -53,6 +53,18 @@
         <source>Email:</source>
         <target>Email:</target>
       </trans-unit>
+      <trans-unit id="qsd980c" resname="Feedback">
+        <source>Feedback</source>
+        <target>Commentaire</target>
+      </trans-unit>
+      <trans-unit id="oC_XLJC" resname="Feedbacks Panel">
+        <source>Feedbacks Panel</source>
+        <target>Panel des commentaires</target>
+      </trans-unit>
+      <trans-unit id="FXZtSfC" resname="Add new feedback or read them.">
+        <source>Add new feedback or read them.</source>
+        <target>Ajoutez de nouveaux commentaires ou lisez-les</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
