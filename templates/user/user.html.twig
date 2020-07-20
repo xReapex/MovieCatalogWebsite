@@ -14,7 +14,7 @@
                     <div class="card" style="width: 18rem; margin: 14px; margin-left: 5px;">
                         <div class="card-body">
                             <h5 class="card-title"><b>{{ "User's ID:" | trans }}</b> {{ user.id }}</h5>
-                            <p class="card-text"><b>{{ "Username:" | trans }}</b> {{ user.username }} <br><b>{{ "Password:" | trans}}</b> {{ user.password | u.truncate(15, '...') }}</p>
+                            <p class="card-text"><b>{{ "Username:" | trans }}</b> {{ user.username }} <br><b>{{ "Email:" | trans}}</b> {{ user.email | u.truncate(15, '...') | raw }}</p>
                             <a href="{{ path('user_delete', {'id': user.id}) }}"><button type="button" class="btn btn-danger">Delete</button></a>
                             <a href="{{ path('user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
                         </div>
