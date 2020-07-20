@@ -33,6 +33,22 @@
         <source>List</source>
         <target>Liste</target>
       </trans-unit>
+      <trans-unit id="OnqBk.y" resname="Users list">
+        <source>Users list</source>
+        <target>Liste d'utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="LxzXJy4" resname="User's ID:">
+        <source>User's ID:</source>
+        <target>ID d'utilisateur:</target>
+      </trans-unit>
+      <trans-unit id="OAbWHDQ" resname="Username:">
+        <source>Username:</source>
+        <target>Pseudonyme:</target>
+      </trans-unit>
+      <trans-unit id="Vpskgqa" resname="Password:">
+        <source>Password:</source>
+        <target>Mot de passe:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

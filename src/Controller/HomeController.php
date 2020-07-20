@@ -41,7 +41,15 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/",  name="homepage")
+     * @Route("/{_locale<%app.supported_locales%>}/")
+     */
+    public function redirectLocaleHome()
+    {
+        return $this->redirectToRoute('homepage', ['_locale' => 'en']);
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/home",  name="homepage")
      * @return Response
      */
     public function showHome()
