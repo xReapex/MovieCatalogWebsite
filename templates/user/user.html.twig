@@ -4,25 +4,23 @@
 {% block body %}
 
     <div class="container">
-        <div class="mt-5">
-            <h1 align="center">{{ "Users list" | trans }}</h1>
+
+        <center>
+            <h1 class="mt-5">{{ "Users list"|trans}}</h1>
+        </center>
+
+        <div class="row">
+            {% for user in users%}
+                <div class="col-md-4">
+                    {% include 'user/_users.html.twig' %}
+                </div>
+            {% endfor %}
         </div>
-        <div class="ml-5 mt-5">
-            <div class="row">
-                {% for user in users %}
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
-                        <div class="card border-light" style="width: 18rem; margin: 14px; margin-left: 5px;">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>{{ "User's ID:" | trans }}</b> {{ user.id }}</h5>
-                                <p class="card-text"><b>{{ "Username:" | trans }}</b> {{ user.username }} <br><b>{{ "Email:" | trans}}</b> {{ user.email | u.truncate(15, '...') | raw }}</p>
-                                <a href="{{ path('user_delete', {'id': user.id}) }}"><button type="button" class="btn btn-danger">Delete</button></a>
-                                <a href="{{ path('user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+
+        <div class="pagination">
+            {{ knp_pagination_render(users) }}
         </div>
+
     </div>
 {% endblock %}
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
 use App\Form\CommentFormType;
@@ -27,9 +28,10 @@ class HomeController extends AbstractController
     private $twig;
     private $repository;
 
-    public function __construct(Environment $twig)
+    public function __construct(Environment $twig, UserRepository $repository)
     {
         $this->twig = $twig;
+        $this->repository = $repository;
     }
 
     /**
@@ -120,15 +122,20 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/{_locale<%app.supported_locales%>}/user", name="user_show")
-     * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function showUser(UserRepository $userRepository)
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $users = $userRepository->findAll();
+        $users = $paginator->paginate(
+            $this->repository->findLastest(),
+            $request->query->getInt('page', 1),
+            6);
 
         return $this->render('user/user.html.twig', [
-            "users" => $users,
+            "current_menu" => 'users',
+            'users' => $users
         ]);
     }
 
@@ -185,5 +192,4 @@ class HomeController extends AbstractController
             ]
         );
     }
-
 }
