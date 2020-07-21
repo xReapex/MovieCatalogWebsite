@@ -6,7 +6,7 @@
     <div class="container">
 
         <center>
-            <h1 class="mt-5">{{ "Users list"|trans}}</h1>
+            <h1 class="mt-1">{{ "Users list"|trans}}</h1>
         </center>
 
         <div class="row">
@@ -17,7 +17,7 @@
             {% endfor %}
         </div>
 
-        <div class="pagination">
+        <div class="pagination justify-content-center" style="margin-bottom: 5%">
             {{ knp_pagination_render(users) }}
         </div>
 
