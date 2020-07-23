@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        .centrer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+    </style>
+
+    {% if (is_granted("ROLE_USER") or is_granted("ROLE_ADMIN")) %}
+        <div class="container">
+            <div class="centrer">
+                <h1>{{ "Connected as"|trans }} "{{ username }}"</h1>
+                <a class="mt-2" href="{{ path('app_logout') }}"> {{ "Logout"|trans }}</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="centrer">
+                <h1>{{ "Anonymously logged in ! "|trans }}</h1>
+                <a class="mt-2" href="{{ path('app_login') }}"> {{ "Login"|trans }}</a>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}
+
