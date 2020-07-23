@@ -205,16 +205,16 @@
         },
         {
             "name": "amphp/dns",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/dns.git",
-                "reference": "8cf2ccc4fa5a97f15b0b11087b22d2b544e45ab2"
+                "reference": "852292532294d7972c729a96b49756d781f7c59d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/dns/zipball/8cf2ccc4fa5a97f15b0b11087b22d2b544e45ab2",
-                "reference": "8cf2ccc4fa5a97f15b0b11087b22d2b544e45ab2",
+                "url": "https://api.github.com/repos/amphp/dns/zipball/852292532294d7972c729a96b49756d781f7c59d",
+                "reference": "852292532294d7972c729a96b49756d781f7c59d",
                 "shasum": ""
             },
             "require": {
@@ -278,7 +278,7 @@
                 "dns",
                 "resolve"
             ],
-            "time": "2020-06-19T20:28:16+00:00"
+            "time": "2020-07-21T19:04:57+00:00"
         },
         {
             "name": "amphp/hpack",
@@ -389,16 +389,16 @@
         },
         {
             "name": "amphp/http-client",
-            "version": "v4.4.1",
+            "version": "v4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/http-client.git",
-                "reference": "ba5d824253c282e1865ad95f9aaaa1db50a67f09"
+                "reference": "39099a5ad69379eb90f2ca83c082b276539328b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/http-client/zipball/ba5d824253c282e1865ad95f9aaaa1db50a67f09",
-                "reference": "ba5d824253c282e1865ad95f9aaaa1db50a67f09",
+                "url": "https://api.github.com/repos/amphp/http-client/zipball/39099a5ad69379eb90f2ca83c082b276539328b9",
+                "reference": "39099a5ad69379eb90f2ca83c082b276539328b9",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "non-blocking",
                 "rest"
             ],
-            "time": "2020-07-10T16:49:21+00:00"
+            "time": "2020-07-21T19:18:31+00:00"
         },
         {
             "name": "amphp/parser",
@@ -2279,16 +2279,16 @@
         },
         {
             "name": "knplabs/knp-components",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/knp-components.git",
-                "reference": "fd116833e70d2b4a017971fa5276f3947499ad14"
+                "reference": "8486446af9591c9c3decaae6c234739288c80a5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/fd116833e70d2b4a017971fa5276f3947499ad14",
-                "reference": "fd116833e70d2b4a017971fa5276f3947499ad14",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/8486446af9591c9c3decaae6c234739288c80a5f",
+                "reference": "8486446af9591c9c3decaae6c234739288c80a5f",
                 "shasum": ""
             },
             "require": {
@@ -2351,7 +2351,7 @@
                 "pager",
                 "paginator"
             ],
-            "time": "2020-07-13T09:42:30+00:00"
+            "time": "2020-07-22T07:39:34+00:00"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
@@ -2799,16 +2799,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "38914429aac460e8e4616c8cb486ecb40ec90bb1"
+                "reference": "f9eee5cec93dfb313a38b6b288741e84e53f02d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/38914429aac460e8e4616c8cb486ecb40ec90bb1",
-                "reference": "38914429aac460e8e4616c8cb486ecb40ec90bb1",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f9eee5cec93dfb313a38b6b288741e84e53f02d5",
+                "reference": "f9eee5cec93dfb313a38b6b288741e84e53f02d5",
                 "shasum": ""
             },
             "require": {
@@ -2876,7 +2876,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2020-05-22T08:12:19+00:00"
+            "time": "2020-07-23T08:41:23+00:00"
         },
         {
             "name": "ocramius/proxy-manager",
