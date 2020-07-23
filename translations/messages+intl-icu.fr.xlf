@@ -43,7 +43,7 @@
       </trans-unit>
       <trans-unit id="OAbWHDQ" resname="Username:">
         <source>Username:</source>
-        <target>Pseudonyme:</target>
+        <target>Pseudo:</target>
       </trans-unit>
       <trans-unit id="Vpskgqa" resname="Password:">
         <source>Password:</source>
@@ -64,6 +64,22 @@
       <trans-unit id="FXZtSfC" resname="Add new feedback or read them.">
         <source>Add new feedback or read them.</source>
         <target>Ajoutez de nouveaux commentaires ou lisez-les.</target>
+      </trans-unit>
+      <trans-unit id="ua4TRNs" resname="Connected as">
+        <source>Connected as</source>
+        <target>Connecté en tant que</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="C3nxzei" resname="Anonymously logged in !">
+        <source>Anonymously logged in !</source>
+        <target>Connecté anonymement !</target>
+      </trans-unit>
+      <trans-unit id="nWMiwfT" resname="Login">
+        <source>Login</source>
+        <target>Se connecter</target>
       </trans-unit>
     </body>
   </file>
