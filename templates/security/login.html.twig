@@ -17,12 +17,6 @@
 
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-
-    <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Remember me</label>
-    </div>
-
     <button type="submit" class="btn btn-primary">Sign in</button>
     or
     <a href="{{ path('register_user') }}"><button type="button" class="btn btn-danger">Register</button></a>

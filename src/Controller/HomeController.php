@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Admin;
+use App\Repository\AdminRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
@@ -22,16 +24,20 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use Symfony\Component\Notifier\Notification\Notification;
 use Symfony\Component\Notifier\NotifierInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class HomeController extends AbstractController
 {
     private $twig;
     private $repository;
+    private $adminRepository;
 
-    public function __construct(Environment $twig, UserRepository $repository)
+    public function __construct(Environment $twig, UserRepository $repository, AdminRepository $adminRepository)
     {
         $this->twig = $twig;
         $this->repository = $repository;
+        $this->adminRepository = $adminRepository;
     }
 
     /**
@@ -68,7 +74,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/user/register", name="register_user")
+     * @Route("/{_locale<%app.supported_locales%>}/register", name="register_user")
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
      * @param NotifierInterface $notifier
@@ -77,7 +83,7 @@ class HomeController extends AbstractController
     public function createUser(Request $request, UserPasswordEncoderInterface $encoder, NotifierInterface $notifier)
     {
 
-        $user = new User();
+        $user = new Admin();
         $form = $this->createForm(FormType::class, $user);
 
         $form
@@ -94,6 +100,7 @@ class HomeController extends AbstractController
                 $hash = $encoder->encodePassword($user, $user->getPassword());
 
                 $user->setPassword($hash);
+                $user->setRoles(["ROLE_USER"]);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
@@ -110,25 +117,6 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/user/{id}", name="user_show_id")
-     * @param $id
-     * @param UserRepository $userRepository
-     * @return Response
-     */
-    public function showID($id, UserRepository $userRepository)
-    {
-        $user = $userRepository->find($id);
-
-        if (!$user){
-            throw $this->createNotFoundException(
-                'Pas d\'utilisateur avec cet id !'.$id
-            );
-        }
-
-        return new Response("Utilisateur trouvé: ".$user->getUsername());
-    }
-
-    /**
      * @Route("/{_locale<%app.supported_locales%>}/user", name="user_show")
      * @param PaginatorInterface $paginator
      * @param Request $request
@@ -136,8 +124,9 @@ class HomeController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
+
         $users = $paginator->paginate(
-            $this->repository->findLastest(),
+            $this->adminRepository->findLastest(),
             $request->query->getInt('page', 1),
             6);
 
@@ -150,10 +139,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/user/delete/{id}", name="user_delete")
      * @param $id
-     * @param UserRepository $userRepository
+     * @param AdminRepository $userRepository
      * @return RedirectResponse
      */
-    public function deleteUser($id, UserRepository $userRepository)
+    public function deleteUser($id, AdminRepository $userRepository)
     {
         $user = $userRepository->find($id);
         $entityManager = $this->getDoctrine()->getManager();
@@ -167,12 +156,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/user/edit/{id}", name="user_edit")
      * @param Request $request
-     * @param User $user
+     * @param Admin $user
      * @param EntityManagerInterface $manager
      * @param UserPasswordEncoderInterface $encoder
      * @return RedirectResponse|Response
      */
-    public function editArticle(Request $request, User $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
+    public function editUser(Request $request, Admin $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $form = $this->createForm(FormType::class, $user);
 
