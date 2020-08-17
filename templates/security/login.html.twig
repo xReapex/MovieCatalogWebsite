@@ -17,6 +17,8 @@
 
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
+    <br>
+
     <button type="submit" class="btn btn-primary">Sign in</button>
     or
     <a href="{{ path('register_user') }}"><button type="button" class="btn btn-danger">Register</button></a>

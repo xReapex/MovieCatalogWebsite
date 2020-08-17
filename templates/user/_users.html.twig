@@ -5,6 +5,18 @@
             <p class="card-text"><b>{{ "Username:" | trans }}</b> {{ user.username }} <br><b>{{ "Email:" | trans}}</b> {{ user.email | u.truncate(15, '...') | raw }}</p>
             <a href="{{ path('user_delete', {'id': user.id}) }}"><button type="button" class="btn btn-danger">Delete</button></a>
             <a href="{{ path('user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
+
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-info">Info</button>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+                        <a class="dropdown-item" href="#">Dropdown link</a>
+                        <a class="dropdown-item" href="#">Dropdown link</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
