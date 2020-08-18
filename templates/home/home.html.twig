@@ -15,7 +15,11 @@
         <div class="container">
             <div class="centrer">
                 <h1>{{ "Connected as"|trans }} "<u>{{ username }}</u>."</h1>
-                <a class="mt-2" href="{{ path('admin') }}"> {{ "Admin Panel"|trans }}</a>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="mt-2" href="{{ path('admin') }}"> {{ "Admin Panel"|trans }}</a>
+                    {% else %}
+                        <a class="mt-2" href="{{ path('app_logout') }}"> {{ "Logout"|trans }}</a>
+                {% endif %}
             </div>
         </div>
     {% else %}

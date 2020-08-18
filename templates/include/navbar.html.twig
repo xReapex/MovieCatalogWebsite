@@ -5,15 +5,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav">
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown-language" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ 'User'|trans }}</a>
-                    <div class="dropdown-menu dropdown-menu-left " aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="{{ path('register_user') }}">{{ 'Register'|trans }}</a>
-                        <a class="dropdown-item" href="{{ path('user_show') }}">{{ 'List'|trans }}</a>
-                    </div>
-                </li>
-            {%endif%}
 
             {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
             <li class="nav-item">

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Repository\AdminRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
 use App\Form\CommentFormType;
@@ -87,7 +88,7 @@ class HomeController extends AbstractController
         $form = $this->createForm(FormType::class, $user);
 
         $form
-            ->add('Username', TextType::class, ['empty_data' => 'Default value'])
+            ->add('Username', TextType::class)
             ->add('Email', EmailType::class)
             ->add('Password', PasswordType::class)
             ->add('Submit', SubmitType::class);

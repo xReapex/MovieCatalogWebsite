@@ -89,6 +89,30 @@
         <source>Admin Panel</source>
         <target>Panel de gestion</target>
       </trans-unit>
+      <trans-unit id="8G2hKMN" resname="Create user">
+        <source>Create user</source>
+        <target>Créer un utilisateur</target>
+      </trans-unit>
+      <trans-unit id="kClzBgP" resname="List users">
+        <source>List users</source>
+        <target>Lister les utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="2yEE_ib" resname="Delete all users">
+        <source>Delete all users</source>
+        <target>Supprimer tout les utilisateurs</target>
+      </trans-unit>
+      <trans-unit id=".fk08On" resname="Create feedbacks">
+        <source>Create feedbacks</source>
+        <target>Créer des avis</target>
+      </trans-unit>
+      <trans-unit id="PDCGr8N" resname="List feedbacks">
+        <source>List feedbacks</source>
+        <target>Lister les avis</target>
+      </trans-unit>
+      <trans-unit id="JkUs3go" resname="Delete all feedbacks">
+        <source>Delete all feedbacks</source>
+        <target>Supprimer tout les avis</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
