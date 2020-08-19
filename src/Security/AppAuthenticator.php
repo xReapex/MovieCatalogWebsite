@@ -6,6 +6,7 @@ use App\Entity\Admin;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -26,13 +27,19 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
 
     public const LOGIN_ROUTE = 'app_login';
 
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
+
     private $entityManager;
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(FlashBagInterface $flashBag, EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
+        $this->flashBag = $flashBag;
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
@@ -87,6 +94,8 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     * @param $credentials
+     * @return string|null
      */
     public function getPassword($credentials): ?string
     {
@@ -98,6 +107,8 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
+
+        $this->flashBag->add('login', 'Bienvenue ' .$this->getPassword($this->getCredentials($request)). ' sur mon site. Ce site est actuellement en Bêta !');
 
         return new RedirectResponse($this->urlGenerator->generate('homepage'));
     }
