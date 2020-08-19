@@ -4,15 +4,6 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav">
-
-            {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('feedback') }}">Feedback</a>
-            </li>
-            {% endif %}
-
-        </ul>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown ">
