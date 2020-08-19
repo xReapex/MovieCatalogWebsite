@@ -3,9 +3,12 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-        <div class="mt-5 ml-5">
-                <div class="container">
-                        {{ form(form) }}
+        <center>
+                <div class="container mt-5 ml-auto" style="width: 500px">
+                        <div class="container">
+                                {{ form(form) }}
+                        </div>
                 </div>
-        </div>
+        </center>
+
 {% endblock %}
