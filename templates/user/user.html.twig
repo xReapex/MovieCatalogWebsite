@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 
     <div class="container">
 
         <center>
-            <h1 class="mt-1">{{ "Users list"|trans}}</h1>
+            <h1 class="mt-3">{{ "Users list"|trans}}</h1>
             {% for message in app.flashes('success') %}
-                <div class="alert alert-dismissible alert-warning" style="width: 480px; border-radius: 10px;">
+                <div class="alert alert-dismissible alert-warning" style="width: 500px; border-radius: 10px;">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     {{ message}}
                 </div>
