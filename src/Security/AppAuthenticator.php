@@ -108,7 +108,17 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
             return new RedirectResponse($targetPath);
         }
 
-        $this->flashBag->add('login', 'Bienvenue ' .$this->getPassword($this->getCredentials($request)). ' sur mon site. Ce site est actuellement en Bêta !');
+        $locale = $request->getLocale();
+
+        if ($locale == "fr"){
+            $this->flashBag->add('login', 'Bienvenue ' .$this->getPassword($this->getCredentials($request)). ' sur mon site. Ce site est actuellement en Bêta !');
+        }
+        else{
+            if($locale == "en"){
+                $this->flashBag->add('login', 'Weclome ' .$this->getPassword($this->getCredentials($request)). ' on my website. This website is currently in Beta !');
+            }
+        }
+
 
         return new RedirectResponse($this->urlGenerator->generate('homepage'));
     }
