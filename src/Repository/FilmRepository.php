@@ -30,17 +30,23 @@ class FilmRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-    public function discover()
+    public function discover($langue)
     {
+
+        if ($langue == "en"){
+            $langue = "us";
+        }
 
         $res = [];
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://api.themoviedb.org/3/discover/movie?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR&region=FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1');
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/discover/movie?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR&region=' .$langue. '&sort_by=popularity.desc&include_adult=false&include_video=false&page=1');
         $content = $response->toArray();
 
         for ($i = 0; $i < 3; $i++){
             $res[$i] = [$content['results'][$i]];
         }
+
+        dump($res);
         return $res;
     }
     

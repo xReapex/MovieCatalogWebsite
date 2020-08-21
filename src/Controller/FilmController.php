@@ -16,12 +16,14 @@ class FilmController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/film", name="film.discover")
      * @param FilmRepository $films
+     * @param Request $request
      * @return Response
      */
 
-    public function discoverFilm(FilmRepository $films)
+    public function discoverFilm(FilmRepository $films, Request $request)
     {
-        $res = $films->discover();
+        $locale = $request->getLocale();
+        $res = $films->discover($locale);
         return $this->render('film/discover.html.twig', [
             'films' => $res
         ]);
