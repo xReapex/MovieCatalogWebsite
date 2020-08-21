@@ -6,6 +6,7 @@ use App\Entity\Film;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * @method Film|null find($id, $lockMode = null, $lockVersion = null)
@@ -15,39 +16,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FilmRepository extends ServiceEntityRepository
 {
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Film::class);
     }
-
-    // /**
-    //  * @return Film[] Returns an array of Film objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Film
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 
     public function findLastest(): Query
     {
@@ -56,4 +29,19 @@ class FilmRepository extends ServiceEntityRepository
             ->addOrderBy('p.id', 'ASC')
             ->getQuery();
     }
+
+    public function discover()
+    {
+
+        $res = [];
+        $client = HttpClient::create();
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/discover/movie?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR&region=FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1');
+        $content = $response->toArray();
+
+        for ($i = 0; $i < 3; $i++){
+            $res[$i] = [$content['results'][$i]];
+        }
+        return $res;
+    }
+    
 }

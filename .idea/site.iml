@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/hpack" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/http" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/http-tunnel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/process" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/serialization" />

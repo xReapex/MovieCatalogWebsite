@@ -20,6 +20,9 @@
     "amphp/http-client": {
         "version": "v4.4.0"
     },
+    "amphp/http-tunnel": {
+        "version": "v1.0.0"
+    },
     "amphp/parser": {
         "version": "v1.0.0"
     },
