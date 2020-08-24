@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\FilmRepository;
+use App\Service\FilmGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,15 +16,16 @@ class FilmController extends AbstractController
 
     /**
      * @Route("/{_locale<%app.supported_locales%>}/film", name="film.discover")
-     * @param FilmRepository $films
+     * @param FilmGenerator $films
      * @param Request $request
      * @return Response
      */
 
-    public function discoverFilm(FilmRepository $films, Request $request)
+    public function discoverFilm(FilmGenerator $films, Request $request)
     {
-        $locale = $request->getLocale();
-        $res = $films->discover($locale);
+        $res = $films->discover(3);
+        //$films->getStars();
+
         return $this->render('film/discover.html.twig', [
             'films' => $res
         ]);

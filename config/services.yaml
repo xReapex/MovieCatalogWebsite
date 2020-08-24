@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.supported_locales: 'en|fr'
+    app.tmdb_key: 'e3ff3545d663f593379a9b36980989d8'
 
 services:
     # default configuration for services in *this* file
