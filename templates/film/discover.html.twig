@@ -14,7 +14,7 @@
                         <h1 class="display-8">{{ film[0]['title'] }}</h1>
                         <p class="my-7">{{ film[0]['overview']}}</p>
                         <hr class="my-4">
-                        <p><i class="fas fa-poll"></i> {{ film[0]['vote_count'] }}<br><i class="fas fa-star"></i> {{ film[0]['vote_average'] }}<br><i class="fas fa-dna"></i> </p>
+                        <p>{{ "Genre" | trans}} : <br>{{ "Vote" | trans }} : {{ film[0]['vote_count'] }} <i class="fas fa-poll"></i><br>{{ "Rating" | trans}} : {{ film[0]['vote_average'] | raw}}</p>
                         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                     </div>
                 </div>
