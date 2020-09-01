@@ -27,13 +27,11 @@ class FilmController extends AbstractController
 
         $stars = $films->getStars($res);
         $res = $films->syncStars($res, $stars);
-
         $genre = $films->getGenre($res);
         dump($genre);
-        die();
 
         return $this->render('film/discover.html.twig', [
-            'films' => $res
+            'films' => $genre
         ]);
     }
 

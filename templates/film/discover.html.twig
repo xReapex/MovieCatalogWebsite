@@ -11,53 +11,19 @@
             {% for film in films %}
                 <div class="col-md-4">
                     <div class="jumbotron" style="height: 98%;">
-                        <h1 class="display-8">{{ film[0]['title'] }}</h1>
-                        <p class="my-7">{{ film[0]['overview']}}</p>
+                        <h1 class="display-8">{{ film['title'] }}</h1>
+                        <p class="my-7">{{ film['overview']}}</p>
                         <hr class="my-4">
-                        <p>{{ "Genre" | trans}} : <br>{{ "Vote" | trans }} : {{ film[0]['vote_count'] }} <i class="fas fa-poll"></i><br>{{ "Rating" | trans}} : {{ film[0]['vote_average'] | raw}}</p>
+                        <p><b>{{ "Genre" | trans}}</b> :
+                            {% for genre in film['genre_name'] %}
+                                {{ genre }}.
+                            {% endfor %}
+                            <br><b>{{ "Vote" | trans }}</b> : {{ film['vote_count'] }} <i class="fas fa-poll"></i><br><b>{{ "Rating" | trans}}</b> : {{ film['vote_average'] | raw}}</p>
                         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="5000">
-                <img src="https://image.tmdb.org/t/p/w100/{{films[0][0]['backdrop_path']}}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="5000">
-                <img src="https://image.tmdb.org/t/p/w100/{{films[1][0]['backdrop_path']}}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="5000">
-                <img src="https://image.tmdb.org/t/p/w100/{{films[2][0]['backdrop_path']}}" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>-->
 
 {% endblock %}
