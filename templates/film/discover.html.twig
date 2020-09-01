@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <div class="jumbotron" style="height: 98%;">
                         <h1 class="display-8">{{ film['title'] }}</h1>
-                        <p class="my-7">{{ film['overview']}}</p>
+                        <p class="my-7">{{ film['overview'] | u.truncate(100)}}...</p>
                         <hr class="my-4">
                         <p><b>{{ "Genre" | trans}}</b> :
                             {% for genre in film['genre_name'] %}
