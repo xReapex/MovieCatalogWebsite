@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Film;
 use App\Repository\FilmRepository;
 use App\Service\FilmManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +29,6 @@ class FilmController extends AbstractController
         $stars = $films->getStars($res);
         $res = $films->syncStars($res, $stars);
         $genre = $films->getGenre($res);
-        dump($genre);
 
         return $this->render('film/discover.html.twig', [
             'films' => $genre
@@ -59,6 +59,26 @@ class FilmController extends AbstractController
                 "film" => $res->toArray()
             ]);
         }
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/search", name="search.film")
+     * @param Request $request
+     * @param FilmManager $filmManager
+     */
+
+    public function search(Request $request, FilmManager $filmManager)
+    {
+        $search = $request->request->get('search');
+        $response = $filmManager->getMovieByName($search);
+        $genre = $filmManager->getGenre($response);
+
+        dump($genre);
+
+        $this->render('film/discover.html.twig', [
+            "films" => $genre
+        ]);
+
     }
 
 }

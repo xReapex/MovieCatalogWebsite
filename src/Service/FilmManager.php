@@ -6,8 +6,11 @@ use http\Url;
 use League\Uri\Http;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class FilmManager
 {
@@ -17,8 +20,9 @@ class FilmManager
     private $params;
     private $api_key;
     private $baseUrl;
+    protected $requestStack;
 
-    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig)
+    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig, RequestStack $requestStack)
     {
 
         $this->api_key = $apiKey;
@@ -26,6 +30,7 @@ class FilmManager
         $this->http = HttpClient::create();
         $this->baseUrl = $baseUrl;
         $this->twig = $twig;
+        $this->requestStack = $requestStack;
 
     }
 
@@ -139,4 +144,11 @@ class FilmManager
         );
     }
 
+    public function getMovieByName($name)
+    {
+        return $this->http->request(
+            'GET',
+            "https://api.themoviedb.org/3/search/movie?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR&query=$name&page=1&include_adult=false"
+        );
+    }
 }
