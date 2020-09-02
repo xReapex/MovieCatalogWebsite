@@ -448,6 +448,9 @@
     "symfony/polyfill-intl-idn": {
         "version": "v1.17.1"
     },
+    "symfony/polyfill-intl-messageformatter": {
+        "version": "v1.18.1"
+    },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.17.1"
     },

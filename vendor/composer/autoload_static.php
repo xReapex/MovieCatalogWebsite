@@ -37,6 +37,7 @@ class ComposerStaticInit84cceb42911e546e2f966b0bf36e9429
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '04b6576f786ea6b5b4b577af08f8e4d1' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -66,6 +67,7 @@ class ComposerStaticInit84cceb42911e546e2f966b0bf36e9429
             'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
+            'Symfony\\Polyfill\\Intl\\MessageFormatter\\' => 39,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
             'Symfony\\Flex\\' => 13,
@@ -261,6 +263,10 @@ class ComposerStaticInit84cceb42911e546e2f966b0bf36e9429
         'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
+        ),
+        'Symfony\\Polyfill\\Intl\\MessageFormatter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter',
         ),
         'Symfony\\Polyfill\\Intl\\Idn\\' => 
         array (
@@ -2659,6 +2665,7 @@ class ComposerStaticInit84cceb42911e546e2f966b0bf36e9429
         'GuzzleHttp\\UriTemplate' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/UriTemplate.php',
         'GuzzleHttp\\Utils' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Utils.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/IntlDateFormatter.php',
+        'IntlException' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/IntlException.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Kelunik\\Certificate\\Certificate' => __DIR__ . '/..' . '/kelunik/certificate/lib/Certificate.php',
         'Kelunik\\Certificate\\FieldNotSupportedException' => __DIR__ . '/..' . '/kelunik/certificate/lib/FieldNotSupportedException.php',
@@ -2923,6 +2930,7 @@ class ComposerStaticInit84cceb42911e546e2f966b0bf36e9429
         'LibDNS\\Records\\Types\\TypeFactory' => __DIR__ . '/..' . '/daverandom/libdns/src/Records/Types/TypeFactory.php',
         'LibDNS\\Records\\Types\\Types' => __DIR__ . '/..' . '/daverandom/libdns/src/Records/Types/Types.php',
         'Locale' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Locale.php',
+        'MessageFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/MessageFormatter.php',
         'Monolog\\DateTimeImmutable' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',
         'Monolog\\ErrorHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ErrorHandler.php',
         'Monolog\\Formatter\\ChromePHPFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/ChromePHPFormatter.php',
@@ -6017,6 +6025,7 @@ class ComposerStaticInit84cceb42911e546e2f966b0bf36e9429
         'Symfony\\Polyfill\\Intl\\Idn\\Info' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/Info.php',
         'Symfony\\Polyfill\\Intl\\Idn\\Resources\\unidata\\DisallowedRanges' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/Resources/unidata/DisallowedRanges.php',
         'Symfony\\Polyfill\\Intl\\Idn\\Resources\\unidata\\Regex' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/Resources/unidata/Regex.php',
+        'Symfony\\Polyfill\\Intl\\MessageFormatter\\MessageFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/MessageFormatter.php',
         'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php73\\Php73' => __DIR__ . '/..' . '/symfony/polyfill-php73/Php73.php',

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+    </style>
+
+    <div class="container">
+        <h2>{{ "An error has occurred :" | trans }} ({{ code }})</h2>
+    </div>
+
+{% endblock %}

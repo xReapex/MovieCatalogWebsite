@@ -12,14 +12,14 @@
                 <div class="col-md-4">
                     <div class="jumbotron" style="height: 98%;">
                         <h1 class="display-8">{{ film['title'] }}</h1>
-                        <p class="my-7">{{ film['overview'] | u.truncate(100)}}...</p>
+                        <p class="my-7">{{ film['overview'] | u.truncate(100)}}</p>
                         <hr class="my-4">
                         <p><b>{{ "Genre" | trans}}</b> :
                             {% for genre in film['genre_name'] %}
                                 {{ genre }}.
                             {% endfor %}
                             <br><b>{{ "Vote" | trans }}</b> : {{ film['vote_count'] }} <i class="fas fa-poll"></i><br><b>{{ "Rating" | trans}}</b> : {{ film['vote_average'] | raw}}</p>
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                        <a type="button" class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Learn More</a>
                     </div>
                 </div>
             {% endfor %}

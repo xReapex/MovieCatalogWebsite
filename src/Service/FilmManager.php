@@ -35,7 +35,6 @@ class FilmManager
     public function discover($limit)
     {
         $content = $this->getData();
-
         for ($i = 0; $i < $limit; $i++){
             $res[$i] = [$content['results'][$i]];
         }
@@ -88,17 +87,14 @@ class FilmManager
     public function syncStars($array, $stars)
     {
         $i=0;
-
         foreach ($array as $item)
         {
             if (!array_key_exists($i, $array) or !array_key_exists($i, $stars)){
-
             }else{
                 $array[$i][0]['vote_average'] = $stars[$i];
             }
             $i++;
         }
-
         return $array;
     }
 
@@ -130,4 +126,20 @@ class FilmManager
         }
         return $moviesData;
     }
+
+    public function getMovieById($id)
+    {
+        $response = $this->http->request(
+            'GET',
+            "https://api.themoviedb.org/3/movie/.$id.?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR"
+        );
+        $statusCode = $response->getStatusCode();
+        if($statusCode != 200)
+        {
+            return $statusCode;
+        }else{
+            return $response->toArray();
+        }
+    }
+
 }

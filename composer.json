@@ -25,6 +25,7 @@
         "symfony/monolog-bundle": "^3.1",
         "symfony/notifier": "5.1.*",
         "symfony/orm-pack": "*",
+        "symfony/polyfill-intl-messageformatter": "^1.18",
         "symfony/process": "5.1.*",
         "symfony/security-bundle": "5.1.*",
         "symfony/serializer-pack": "*",

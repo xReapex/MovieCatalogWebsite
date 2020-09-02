@@ -15,7 +15,7 @@ class FilmController extends AbstractController
 {
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/film", name="film.discover")
+     * @Route("/{_locale<%app.supported_locales%>}/discover", name="film.discover")
      * @param FilmManager $films
      * @param Request $request
      * @return Response
@@ -33,6 +33,32 @@ class FilmController extends AbstractController
         return $this->render('film/discover.html.twig', [
             'films' => $genre
         ]);
+    }
+
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/film/{id}", name="film.discover.id")
+     * @param $id
+     * @param FilmManager $films
+     */
+
+    public function showId($id, FilmManager $films)
+    {
+        $res = $films->getMovieById($id);
+
+        if ($res !== 200)
+        {
+            return $this->render('error.html.twig', [
+                "code" => $res
+            ]);
+        }
+        else {
+            return $this->render('film/id.html.twig', [
+                "film" => $res
+            ]);
+        }
+
+
+
     }
 
 }

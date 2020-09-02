@@ -111,11 +111,11 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
         $locale = $request->getLocale();
 
         if ($locale == "fr"){
-            $this->flashBag->add('login', 'Bienvenue ' .$this->getPassword($this->getCredentials($request)). ' sur mon site. Ce site est actuellement en Bêta !');
+            $this->flashBag->add('login', 'Bienvenue "' .$this->getCredentials($request)['username']. '" sur mon site. Ce site est actuellement en Bêta !');
         }
         else{
             if($locale == "en"){
-                $this->flashBag->add('login', 'Weclome ' .$this->getPassword($this->getCredentials($request)). ' on my website. This website is currently in Beta !');
+                $this->flashBag->add('login', 'Welcome "' .$this->getCredentials($request)['username']. '" on my website. This website is currently in Beta !');
             }
         }
 
