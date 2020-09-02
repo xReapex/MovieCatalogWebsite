@@ -6,22 +6,26 @@ use http\Url;
 use League\Uri\Http;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpClient;
+use Twig\Environment;
+use Symfony\Component\HttpFoundation\Response;
 
 class FilmManager
 {
 
+    private $twig;
     private $http;
     private $params;
     private $api_key;
     private $baseUrl;
 
-    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl)
+    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig)
     {
 
         $this->api_key = $apiKey;
         $this->params = $params;
         $this->http = HttpClient::create();
         $this->baseUrl = $baseUrl;
+        $this->twig = $twig;
 
     }
 
@@ -129,17 +133,10 @@ class FilmManager
 
     public function getMovieById($id)
     {
-        $response = $this->http->request(
+        return $this->http->request(
             'GET',
-            "https://api.themoviedb.org/3/movie/.$id.?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR"
+            "https://api.themoviedb.org/3/movie/$id?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR"
         );
-        $statusCode = $response->getStatusCode();
-        if($statusCode != 200)
-        {
-            return $statusCode;
-        }else{
-            return $response->toArray();
-        }
     }
 
 }

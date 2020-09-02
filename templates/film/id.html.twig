@@ -2,6 +2,50 @@
 
 {% block body %}
 
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin-top: 10%;
+            margin-bottom: 7%;
+        }
+    </style>
 
+<div class="container">
+    <div class="jumbotron" style="border-radius: 10px;">
+        <h1 class="display-3">{{film['title']}}</h1>
+
+        <p class="lead">{{ film['overview'] }}</p>
+        <hr class="my-4">
+        <p>
+            <b>Status : </b>
+
+            {% if film['status'] == "Released"%}
+                <span class="badge badge-pill badge-success">Released</span>
+                {% else %}
+                    <span class="badge badge-pill badge-warning">In coming</span>
+            {% endif %}
+
+            <br>
+            <b>Release date : {{ film['release_date'] }}</b>
+            <br>
+            <b>Produced by :</b>
+            {% for prod in film['production_companies'] %}
+                {{ prod['name'] }} ({{ prod['origin_country'] }}).
+            {% endfor %}<br>
+            <b>Spoken languages </b>:
+
+            {% for lang in film['spoken_languages'] %}
+                {{ lang['name'] }} ({{ lang['iso_639_1'] }}).
+            {% endfor %}
+
+        </p>
+        <p class="lead">
+            <a style="border-radius: 10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="history.back(-1)">{{ "Back" | trans }}</a>
+        </p>
+    </div>
+</div>
 
 {% endblock %}

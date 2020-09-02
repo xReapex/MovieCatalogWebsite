@@ -23,7 +23,7 @@ class FilmController extends AbstractController
 
     public function discoverFilm(FilmManager $films, Request $request)
     {
-        $res = $films->discover(20);
+        $res = $films->discover(18);
 
         $stars = $films->getStars($res);
         $res = $films->syncStars($res, $stars);
@@ -45,20 +45,20 @@ class FilmController extends AbstractController
     {
         $res = $films->getMovieById($id);
 
-        if ($res !== 200)
+        $statusCode = $res->getStatusCode();
+        if($statusCode != 200)
         {
             return $this->render('error.html.twig', [
-                "code" => $res
+                "code" => $statusCode
             ]);
-        }
-        else {
+        }else{
+
+            dump($res->toArray());
+
             return $this->render('film/id.html.twig', [
-                "film" => $res
+                "film" => $res->toArray()
             ]);
         }
-
-
-
     }
 
 }
