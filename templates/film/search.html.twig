@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row" style="margin-top: 5%">
+            {% for film in films %}
+                <div class="col-md-4">
+                    <div class="jumbotron" style="height: 98%;border-radius: 10px;">
+                        <h1 class="display-8">{{ film['title'] }}</h1>
+                        <p class="my-7">{{ film['overview'] | u.truncate(100)}}...</p>
+                        <hr class="my-4">
+                        <p>
+                            <b>{{ "Vote" | trans }}</b> : {{ film['vote_count'] }} <i class="fas fa-poll"></i><br><b>{{ "Rating" | trans}}</b> : {{ film['vote_average'] | raw}}</p>
+                        <a href="{{ path('film.discover.id', {id: film['id']}) }}" type="button" class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="border-radius: 10px;">Learn More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
