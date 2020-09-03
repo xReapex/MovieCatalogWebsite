@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <br><center><h2 class="mt-3">{{ "Find movies by genre !" }}</h2></center></br>
+
+    <center>
+        <div class="container" style="margin-bottom: 3%; ">
+            <div class="row">
+                {% for genre in genres %}
+                    <div class="col-md-3 mt-2">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action" style="border-radius: 10px;">{{ genre['name'] }}</a>
+                       </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </center>
+
+
+{% endblock %}
