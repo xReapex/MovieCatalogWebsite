@@ -82,11 +82,14 @@ class FilmController extends AbstractController
     /**
      * @Route("/{_locale<%app.supported_locales%>}/genres", name="show.genres")
      * @param FilmManager $filmManager
+     * @param Request $request
      * @return Response
      */
-    public function show(FilmManager $filmManager)
+    public function show(FilmManager $filmManager, Request $request)
     {
-        $genres = $filmManager->getAllGenre()['genres'];
+        $locale = $request->getLocale();
+
+        $genres = $filmManager->getAllGenre($locale)['genres'];
 
         return $this->render('film/genre.html.twig', [
             "genres" => $genres

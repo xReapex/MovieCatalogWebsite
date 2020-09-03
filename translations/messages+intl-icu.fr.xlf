@@ -113,6 +113,50 @@
         <source>Delete all feedbacks</source>
         <target>Supprimer tout les avis</target>
       </trans-unit>
+      <trans-unit id="cEgtmjD" resname="Discover Movies">
+        <source>Discover Movies</source>
+        <target>Découvrir des films</target>
+      </trans-unit>
+      <trans-unit id="baeVqGZ" resname="Genre">
+        <source>Genre</source>
+        <target>Genre</target>
+      </trans-unit>
+      <trans-unit id="zVWI22." resname="Vote">
+        <source>Vote</source>
+        <target>Vote</target>
+      </trans-unit>
+      <trans-unit id="nylTBGT" resname="Rating">
+        <source>Rating</source>
+        <target>Notation</target>
+      </trans-unit>
+      <trans-unit id="dpAPG.0" resname="Back">
+        <source>Back</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id="3.kktp_" resname="Movies">
+        <source>Movies</source>
+        <target>Films</target>
+      </trans-unit>
+      <trans-unit id="iizAZzs" resname="Demo">
+        <source>Demo</source>
+        <target>Demo</target>
+      </trans-unit>
+      <trans-unit id="5xm6A6V" resname="An error has occurred :">
+        <source>An error has occurred :</source>
+        <target>Une erreur est survenue :</target>
+      </trans-unit>
+      <trans-unit id="hNva2q_" resname="Search movies by name">
+        <source>Search movies by name</source>
+        <target>Chercher des films par nom</target>
+      </trans-unit>
+      <trans-unit id="jYzVRrW" resname="Learn More">
+        <source>Learn More</source>
+        <target>En savoir plus</target>
+      </trans-unit>
+      <trans-unit id="ICrOscU" resname="Login for more">
+        <source>Login for more</source>
+        <target>Connectez-vous pour plus</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

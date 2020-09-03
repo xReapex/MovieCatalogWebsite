@@ -179,9 +179,15 @@ class FilmManager
         );
     }
 
-    public function getAllGenre()
+    public function getAllGenre($locale)
     {
-        $response = $this->http->request('GET', "https://api.themoviedb.org/3/genre/movie/list?api_key=$this->api_key&language=fr-FR");
+        if ($locale == "fr"){
+            $locale1 = "fr-FR";
+        }else{
+            $locale1 = "en-US";
+        }
+
+        $response = $this->http->request('GET', "https://api.themoviedb.org/3/genre/movie/list?api_key=$this->api_key&language=$locale1");
         return $response->toArray();
     }
 }
