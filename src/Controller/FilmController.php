@@ -10,7 +10,7 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use function Amp\Iterator\toArray;
 
 class FilmController extends AbstractController
 {
@@ -27,7 +27,7 @@ class FilmController extends AbstractController
         $res = $films->discover(18);
 
         $stars = $films->getStars($res);
-        $res = $films->syncStars($res, $stars);
+        $res = $films->syncStars($res, $stars, 1);
         $genre = $films->getGenre($res);
 
         return $this->render('film/discover.html.twig', [
@@ -70,13 +70,13 @@ class FilmController extends AbstractController
     public function search(Request $request, FilmManager $filmManager)
     {
         $search = $request->request->get('search');
-        $response = $filmManager->getMovieByName($search);
-        $genre = $filmManager->getGenre($response);
+        $response = $filmManager->getMovieByName($search)->toArray()['results'];
 
-        dump($genre);
+        $stars = $filmManager->getStars($response);
+        $response = $filmManager->syncStars($response, $stars, 0);
 
-        $this->render('film/discover.html.twig', [
-            "films" => $genre
+        return $this->render('film/search.html.twig', [
+            "films" => $response
         ]);
 
     }

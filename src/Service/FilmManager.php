@@ -54,7 +54,14 @@ class FilmManager
     {
         $i = 0;
         foreach ($content as $film){
-            $stars = ($content[$i][0]['vote_average'])/2;
+
+            if (!array_key_exists(0, $content[$i])){
+                $stars = ($content[$i]['vote_average'])/2;
+            }
+            else{
+                $stars = (($content[$i][0]['vote_average'])/2);
+            }
+
             switch ($stars)
             {
                 case ($stars>0 and $stars<=0.5):
@@ -93,18 +100,38 @@ class FilmManager
         return $res;
     }
 
-    public function syncStars($array, $stars)
+    public function syncStars($array, $stars, $n)
     {
-        $i=0;
-        foreach ($array as $item)
-        {
-            if (!array_key_exists($i, $array) or !array_key_exists($i, $stars)){
-            }else{
-                $array[$i][0]['vote_average'] = $stars[$i];
+
+        if ($n == 0){
+            $i=0;
+            foreach ($array as $item)
+            {
+                if (!array_key_exists($i, $array) or !array_key_exists($i, $stars)){
+                }else{
+
+                    $array[$i]['vote_average'] = $stars[$i];
+                }
+                $i++;
             }
-            $i++;
+            return $array;
+        }else{
+            if ($n == 1){
+                $i=0;
+                foreach ($array as $item)
+                {
+                    if (!array_key_exists($i, $array) or !array_key_exists($i, $stars)){
+                    }else{
+
+                        $array[$i][0]['vote_average'] = $stars[$i];
+                    }
+                    $i++;
+                }
+                return $array;
+            }
         }
-        return $array;
+
+
     }
 
     public function getGenre($content)
