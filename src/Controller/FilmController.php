@@ -53,8 +53,6 @@ class FilmController extends AbstractController
             ]);
         }else{
 
-            dump($res->toArray());
-
             return $this->render('film/id.html.twig', [
                 "film" => $res->toArray()
             ]);
@@ -70,6 +68,7 @@ class FilmController extends AbstractController
     public function search(Request $request, FilmManager $filmManager)
     {
         $search = $request->request->get('search');
+
         $response = $filmManager->getMovieByName($search)->toArray()['results'];
 
         $stars = $filmManager->getStars($response);
@@ -78,7 +77,20 @@ class FilmController extends AbstractController
         return $this->render('film/search.html.twig', [
             "films" => $response
         ]);
+    }
 
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/genres", name="show.genres")
+     * @param FilmManager $filmManager
+     * @return Response
+     */
+    public function show(FilmManager $filmManager)
+    {
+        $genres = $filmManager->getAllGenre()['genres'];
+
+        return $this->render('film/genre.html.twig', [
+            "genres" => $genres
+        ]);
     }
 
 }

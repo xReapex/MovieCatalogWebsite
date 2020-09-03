@@ -178,4 +178,10 @@ class FilmManager
             "https://api.themoviedb.org/3/search/movie?api_key=e3ff3545d663f593379a9b36980989d8&language=fr-FR&query=$name&page=1&include_adult=false"
         );
     }
+
+    public function getAllGenre()
+    {
+        $response = $this->http->request('GET', "https://api.themoviedb.org/3/genre/movie/list?api_key=$this->api_key&language=fr-FR");
+        return $response->toArray();
+    }
 }
