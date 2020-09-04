@@ -77,7 +77,7 @@ class FilmManager
                     $res[$i] = '<html><body><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></body></html>';
                     break;
                 case ($stars>2 and $stars<=2.5):
-                    $res[$i] = '<html><body><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i></body></html>';
+                    $res[$i] = '<html><body><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i></body></html>';
                     break;
                 case ($stars>2.5 and $stars<=3):
                     $res[$i] = '<html><body><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></body></html>';

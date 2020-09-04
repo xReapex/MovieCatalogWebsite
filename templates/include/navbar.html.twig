@@ -37,19 +37,6 @@
         {% endif %}
 
         {% if is_granted('ROLE_USER') %}
-
-            <script>
-
-                let btnShow = document.querySelector('button');
-                let input = document.querySelector('input');
-
-                input.addEventListener('keyup', () =>{
-                    if (input.value.length > 3) btnShow.disabled = true
-                    else btnShow.disabled = false
-                })
-
-            </script>
-
             <form method="post" action="{{ path('search.film') }}" class="form-inline my-2 my-lg-0">
                 <input name="search" style="border-radius: 10px;" class="form-control mr-sm-2" type="text" placeholder="{{ "Search movies by name" | trans }}">
                 <button style="border-radius: 10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="far fa-eye"></i></button>
@@ -69,17 +56,21 @@
                 </div>
             </li>
 
+            {% if is_granted('ROLE_USER') %}
+
             <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown-language" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
                 </a>
                 <div style="border-radius: 10px;" class="dropdown-menu dropdown-menu-right " aria-labelledby="dropdown-language">
                     <a style="border-radius: 10px;" class="dropdown-item disabled" href="#"><i class="fa fa-address-card" aria-hidden="true"></i> Pseudo : {{ app.user.username }}</a>
                     <div class="dropdown-divider"></div>
-                    <a style="border-radius: 10px;" class="dropdown-item disabled" href="#">E-mail : {{ app.user.email }}</a>
+                    <a style="border-radius: 10px;" class="dropdown-item disabled" href="#"><i class="fas fa-at"></i> E-mail : {{ app.user.email }}</a>
                     <div class="dropdown-divider"></div>
-                    <a style="border-radius: 10px;" class="dropdown-item disabled" href="#">Role : {{ app.user.roles[0] | slice(5) | lower}}</a>
+                    <a style="border-radius: 10px;" class="dropdown-item disabled" href="#"><i class="fas fa-user-tag"></i> Role : {{ app.user.roles[0] | slice(5) | lower}}</a>
                 </div>
             </li>
+
+            {% endif %}
 
         </ul>
     </div>
