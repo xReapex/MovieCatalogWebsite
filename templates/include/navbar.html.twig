@@ -14,12 +14,12 @@
         {% if is_granted('ROLE_USER') %}
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ticket" aria-hidden="true"></i> {{"Movies" | trans}}</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-video"></i> {{"Movies" | trans}}</a>
                 <div style="border-radius: 10px;"class="dropdown-menu">
-                    <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('film.discover') }}">Discover</a>
-                    <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('show.genres') }}">Themes</a>
+                    <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('film.discover') }}"><i class="far fa-eye"></i> Discover</a>
+                    <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('show.genres') }}"><i class="fas fa-list-ul"></i> Themes</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-meteor"></i> Premium</a>
                 </div>
             </li>
         </ul>
@@ -39,7 +39,7 @@
         {% if is_granted('ROLE_USER') %}
             <form method="post" action="{{ path('search.film') }}" class="form-inline my-2 my-lg-0">
                 <input name="search" style="border-radius: 10px;" class="form-control mr-sm-2" type="text" placeholder="{{ "Search movies by name" | trans }}">
-                <button style="border-radius: 10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="far fa-eye"></i></button>
+                <button style="border-radius: 10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
             </form>
         {% endif %}
 

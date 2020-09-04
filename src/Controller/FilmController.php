@@ -96,4 +96,24 @@ class FilmController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/genre/{genre}", name="order.genre")
+     * @param $genre
+     * @param Request $request
+     * @param FilmManager $filmManager
+     */
+
+    public function showByGenre($genre, Request $request, FilmManager $filmManager)
+    {
+        $locale = $request->getLocale();
+        $res = $filmManager->getMoviesByGenre($genre)['results'];
+        $stars = $filmManager->getStars($res);
+        $response = $filmManager->syncStars($res, $stars, 0);
+
+        return $this->render('film/search.html.twig', [
+           "films" => $response
+        ]);
+
+    }
+
 }

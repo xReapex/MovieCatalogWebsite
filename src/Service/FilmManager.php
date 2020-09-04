@@ -190,4 +190,11 @@ class FilmManager
         $response = $this->http->request('GET', "https://api.themoviedb.org/3/genre/movie/list?api_key=$this->api_key&language=$locale1");
         return $response->toArray();
     }
+
+    public function getMoviesByGenre($genre)
+    {
+        $response = $this->http->request('GET', "https://api.themoviedb.org/3/discover/movie?api_key=$this->api_key&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=$genre");
+        return $response->toArray();
+    }
+
 }
