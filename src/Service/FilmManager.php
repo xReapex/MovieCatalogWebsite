@@ -97,7 +97,12 @@ class FilmManager
             }
             $i++;
         }
-        return $res;
+
+        if (!isset($res)) {}
+        else{
+            return $res;
+        }
+
     }
 
     public function syncStars($array, $stars, $n)

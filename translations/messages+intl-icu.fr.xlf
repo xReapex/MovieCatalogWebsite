@@ -155,7 +155,15 @@
       </trans-unit>
       <trans-unit id="ICrOscU" resname="Login for more">
         <source>Login for more</source>
-        <target>Connectez-vous pour plus</target>
+        <target>Connection requise</target>
+      </trans-unit>
+      <trans-unit id="GMf1jD4" resname="We found this for you :">
+        <source>We found this for you :</source>
+        <target>Nous vous avons trouvé ça :</target>
+      </trans-unit>
+      <trans-unit id="2T8djiy" resname="Login for more.">
+        <source>Login for more.</source>
+        <target>Connection requise</target>
       </trans-unit>
     </body>
   </file>

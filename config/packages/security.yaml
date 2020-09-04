@@ -52,5 +52,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/(en|fr)/register, roles: [IS_AUTHENTICATED_ANONYMOUSLY, ROLE_ADMIN] }
-         - { path: ^/(en|fr)/user, roles: [ROLE_ADMIN, ROLE_SUPERADMIN] }
+         - { path: ^/{_locale}/user, roles: [ROLE_ADMIN, ROLE_SUPERADMIN] }
 
