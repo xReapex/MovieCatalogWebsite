@@ -37,10 +37,12 @@
         {% endif %}
 
         {% if is_granted('ROLE_USER') %}
-            <form method="post" action="{{ path('search.film') }}" class="form-inline my-2 my-lg-0">
-                <input name="search" style="border-radius: 10px;" class="form-control mr-sm-2" type="text" placeholder="{{ "Search movies by name" | trans }}">
-                <button style="border-radius: 10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
+            <div id="app">
+                <form method="post" action="{{ path('search.film') }}" class="form-inline my-2 my-lg-0">
+                    <input name="search" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "15" style="border-radius: 10px;" class="form-control mr-sm-2" type="text" v-model="search" placeholder="{{ "Search movies by name" | trans }}">
+                    <button style="border-radius: 10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> #{search}</button>
+                </form>
+            </div>
         {% endif %}
 
         <ul class="navbar-nav ml-auto">

@@ -14,6 +14,7 @@ return array(
     'Twig\\Extra\\String\\' => array($vendorDir . '/twig/string-extra/src'),
     'Twig\\Extra\\Intl\\' => array($vendorDir . '/twig/intl-extra/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
+    'Symfony\\WebpackEncoreBundle\\' => array($vendorDir . '/symfony/webpack-encore-bundle/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
