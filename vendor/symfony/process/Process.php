@@ -30,24 +30,24 @@ use Symfony\Component\Process\Pipes\WindowsPipes;
  */
 class Process implements \IteratorAggregate
 {
-    const ERR = 'err';
-    const OUT = 'out';
+    public const ERR = 'err';
+    public const OUT = 'out';
 
-    const STATUS_READY = 'ready';
-    const STATUS_STARTED = 'started';
-    const STATUS_TERMINATED = 'terminated';
+    public const STATUS_READY = 'ready';
+    public const STATUS_STARTED = 'started';
+    public const STATUS_TERMINATED = 'terminated';
 
-    const STDIN = 0;
-    const STDOUT = 1;
-    const STDERR = 2;
+    public const STDIN = 0;
+    public const STDOUT = 1;
+    public const STDERR = 2;
 
     // Timeout Precision in seconds.
-    const TIMEOUT_PRECISION = 0.2;
+    public const TIMEOUT_PRECISION = 0.2;
 
-    const ITER_NON_BLOCKING = 1; // By default, iterating over outputs is a blocking call, use this flag to make it non-blocking
-    const ITER_KEEP_OUTPUT = 2;  // By default, outputs are cleared while iterating, use this flag to keep them in memory
-    const ITER_SKIP_OUT = 4;     // Use this flag to skip STDOUT while iterating
-    const ITER_SKIP_ERR = 8;     // Use this flag to skip STDERR while iterating
+    public const ITER_NON_BLOCKING = 1; // By default, iterating over outputs is a blocking call, use this flag to make it non-blocking
+    public const ITER_KEEP_OUTPUT = 2;  // By default, outputs are cleared while iterating, use this flag to keep them in memory
+    public const ITER_SKIP_OUT = 4;     // Use this flag to skip STDOUT while iterating
+    public const ITER_SKIP_ERR = 8;     // Use this flag to skip STDERR while iterating
 
     private $callback;
     private $hasCallback = false;
@@ -934,7 +934,7 @@ class Process implements \IteratorAggregate
     {
         $this->lastOutputTime = microtime(true);
 
-        fseek($this->stdout, 0, SEEK_END);
+        fseek($this->stdout, 0, \SEEK_END);
         fwrite($this->stdout, $line);
         fseek($this->stdout, $this->incrementalOutputOffset);
     }
@@ -948,7 +948,7 @@ class Process implements \IteratorAggregate
     {
         $this->lastOutputTime = microtime(true);
 
-        fseek($this->stderr, 0, SEEK_END);
+        fseek($this->stderr, 0, \SEEK_END);
         fwrite($this->stderr, $line);
         fseek($this->stderr, $this->incrementalErrorOutputOffset);
     }
@@ -1343,7 +1343,7 @@ class Process implements \IteratorAggregate
         }
 
         ob_start();
-        phpinfo(INFO_GENERAL);
+        phpinfo(\INFO_GENERAL);
 
         return self::$sigchild = false !== strpos(ob_get_clean(), '--enable-sigchild');
     }

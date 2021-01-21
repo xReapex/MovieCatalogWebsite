@@ -87,6 +87,9 @@ final class Http1Connection implements Connection
     /** @var TlsInfo|null */
     private $tlsInfo;
 
+    /** @var Promise|null */
+    private $idleRead;
+
     public function __construct(EncryptableSocket $socket, int $timeoutGracePeriod = 2000)
     {
         $this->socket = $socket;
@@ -95,6 +98,7 @@ final class Http1Connection implements Connection
         $this->tlsInfo = $socket->getTlsInfo();
         $this->timeoutGracePeriod = $timeoutGracePeriod;
         $this->lastUsedAt = getCurrentTime();
+        $this->watchIdleConnection();
     }
 
     public function __destruct()
@@ -159,6 +163,7 @@ final class Http1Connection implements Connection
     private function free(): Promise
     {
         $this->socket = null;
+        $this->idleRead = null;
 
         $this->lastUsedAt = 0;
 
@@ -191,6 +196,10 @@ final class Http1Connection implements Connection
     {
         return call(function () use ($request, $cancellation, $stream) {
             ++$this->requestCounter;
+
+            if ($this->socket !== null && !$this->socket->isClosed()) {
+                $this->socket->reference();
+            }
 
             if ($this->timeoutWatcher !== null) {
                 Loop::cancel($this->timeoutWatcher);
@@ -290,9 +299,11 @@ final class Http1Connection implements Connection
             }
 
             while (null !== $chunk = yield $timeout > 0
-                    ? Promise\timeout($this->socket->read(), $timeout)
-                    : $this->socket->read()
+                    ? Promise\timeout($this->idleRead ?: $this->socket->read(), $timeout)
+                    : ($this->idleRead ?: $this->socket->read())
             ) {
+                $this->idleRead = null;
+
                 parseChunk:
                 $response = $parser->parse($chunk);
                 if ($response === null) {
@@ -445,6 +456,8 @@ final class Http1Connection implements Connection
                         if ($timeout > 0 && $parser->getState() !== Http1Parser::BODY_IDENTITY_EOF) {
                             $this->timeoutWatcher = Loop::delay($timeout * 1000, [$this, 'close']);
                             Loop::unreference($this->timeoutWatcher);
+
+                            $this->watchIdleConnection();
                         } else {
                             $this->close();
                         }
@@ -723,5 +736,21 @@ final class Http1Connection implements Connection
         }
 
         return $header . "\r\n";
+    }
+
+    private function watchIdleConnection(): void
+    {
+        if ($this->socket === null || $this->socket->isClosed()) {
+            return;
+        }
+
+        $this->socket->unreference();
+
+        $this->idleRead = $this->socket->read();
+        $this->idleRead->onResolve(function ($error, $chunk) {
+            if ($error || $chunk === null) {
+                $this->close();
+            }
+        });
     }
 }

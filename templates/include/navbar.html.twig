@@ -18,8 +18,6 @@
                 <div style="border-radius: 10px;"class="dropdown-menu">
                     <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('film.discover') }}"><i class="far fa-eye"></i> Discover</a>
                     <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('show.genres') }}"><i class="fas fa-list-ul"></i> Themes</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fas fa-meteor"></i> Premium</a>
                 </div>
             </li>
         </ul>
@@ -39,7 +37,7 @@
         {% if is_granted('ROLE_USER') %}
             <div id="app">
                 <form method="post" action="{{ path('search.film') }}" class="form-inline my-2 my-lg-0">
-                    <input name="search" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "15" style="border-radius: 10px;" class="form-control mr-sm-2" type="text" v-model="search" placeholder="{{ "Search movies by name" | trans }}">
+                    <input name="search" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "15" style="border-radius: 10px;" class="form-control mr-sm-2" type="text" v-model="search" placeholder="{{ "Search movies" | trans }}">
                     <button style="border-radius: 10px;" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> #{search}</button>
                 </form>
             </div>

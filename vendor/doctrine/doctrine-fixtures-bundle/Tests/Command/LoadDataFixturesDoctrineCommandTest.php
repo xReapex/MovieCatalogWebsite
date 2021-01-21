@@ -11,12 +11,13 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Container;
 use TypeError;
 use const PHP_VERSION_ID;
+use function sprintf;
 
 class LoadDataFixturesDoctrineCommandTest extends TestCase
 {
     /**
      * @group legacy
-     * @expectedDeprecation The "Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand" constructor expects a "Doctrine\Persistence\ManagerRegistry" instance as second argument, not passing it will throw a \TypeError in DoctrineFixturesBundle 4.0.
+     * @expectedDeprecation Argument 2 of Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand::__construct() expects an instance of Doctrine\Persistence\ManagerRegistry, not passing it will throw a \TypeError in DoctrineFixturesBundle 4.0.
      */
     public function testInstantiatingWithoutManagerRegistry() : void
     {
@@ -28,12 +29,15 @@ class LoadDataFixturesDoctrineCommandTest extends TestCase
             if (PHP_VERSION_ID >= 80000) {
                 $this->expectExceptionMessage(
                     <<<'MESSAGE'
-Doctrine\Bundle\DoctrineBundle\Command\DoctrineCommand::__construct(): Argument #1 ($doctrine) must be of type Doctrine\Persistence\ManagerRegistry, null given, called in /home/travis/build/doctrine/DoctrineFixturesBundle/Command/LoadDataFixturesDoctrineCommand.php on line 41
+Doctrine\Bundle\DoctrineBundle\Command\DoctrineCommand::__construct(): Argument #1 ($doctrine) must be of type Doctrine\Persistence\ManagerRegistry, null given, called in /home/runner/work/DoctrineFixturesBundle/DoctrineFixturesBundle/Command/LoadDataFixturesDoctrineCommand.php on line 49
 MESSAGE
                 );
                 throw $e;
             }
-            $this->expectExceptionMessage('Argument 1 passed to Doctrine\Bundle\DoctrineBundle\Command\DoctrineCommand::__construct() must be an instance of Doctrine\Persistence\ManagerRegistry, null given');
+            $this->expectExceptionMessage(sprintf(
+                'Argument 1 passed to Doctrine\Bundle\DoctrineBundle\Command\DoctrineCommand::__construct() must be an instance of %s, null given',
+                ManagerRegistry::class
+            ));
 
             throw $e;
         }

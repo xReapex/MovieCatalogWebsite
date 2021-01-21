@@ -33,8 +33,10 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Yaml\Yaml;
+use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestInterface;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestTrait;
+use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordToken;
 use SymfonyCasts\Bundle\ResetPassword\Persistence\Repository\ResetPasswordRequestRepositoryTrait;
 use SymfonyCasts\Bundle\ResetPassword\Persistence\ResetPasswordRequestRepositoryInterface;
 use SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle;
@@ -82,6 +84,14 @@ class MakeResetPassword extends AbstractMaker
         ORMDependencyBuilder::buildDependencies($dependencies);
 
         $dependencies->addClassDependency(Annotation::class, 'annotations');
+
+        // reset-password-bundle 1.3 includes helpers to get/set a ResetPasswordToken object from the session.
+        // we need to check that version 1.3 is installed
+        if (class_exists(ResetPasswordToken::class)) {
+            if (!method_exists(ResetPasswordControllerTrait::class, 'getTokenObjectFromSession')) {
+                throw new RuntimeCommandException('Please upgrade symfonycasts/reset-password-bundle to version 1.3 or greater.');
+            }
+        }
     }
 
     public function interact(InputInterface $input, ConsoleStyle $io, Command $command)

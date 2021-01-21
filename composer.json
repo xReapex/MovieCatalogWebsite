@@ -4,7 +4,6 @@
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
-        "ext-http": "*",
         "ext-iconv": "*",
         "amphp/http-client": "^4.4",
         "amphp/http-tunnel": "^1.0",

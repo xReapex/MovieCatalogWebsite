@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div style="margin: 0 auto; width: 350px">
+    <div style="margin: 0 auto; width: 350px; margin-top: 18%">
         <div class="container">
             <a href="{{ path('register_user') }}"><button type="button" class="btn btn-secondary btn-lg btn-block" style="margin-top: 10%; border-radius: 10px;">{{ 'Create user' | trans }}</button></a><br>
             <a href="{{ path('user_show') }}"><button type="button" class="btn btn-success btn-lg btn-block" style="border-radius: 10px;">{{ 'List users' | trans }}</button><br></a>
@@ -13,10 +13,6 @@
             <center>
                 <a class="btn btn-primary btn-sm mt-2" style="border-radius: 10px" href="{{ path('app_logout') }}"> {{ "Logout"|trans }}</a>
             </center>
-            <br>
-            <button type="button" class="btn btn-secondary btn-lg btn-block" style="border-radius: 10px;">{{ 'Create feedbacks' | trans }}</button><br>
-            <button type="button" class="btn btn-success btn-lg btn-block" style="border-radius: 10px;">{{ 'List feedbacks' | trans }}</button><br>
-            <button type="button" class="btn btn-danger btn-lg btn-block" style="border-radius: 10px;">{{ 'Delete all feedbacks' |trans }}</button><br>
         </div>
     </div>
 
