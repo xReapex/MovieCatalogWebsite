@@ -1,29 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}{{ "Login" | trans }}{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <form method="post">
 
-
-        <div class="container mt-5 ml-auto" style="width: 500px">
-            <label for="inputUsername">Username</label>
-            <input style="border-radius: 10px;" type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-            <label for="inputPassword">Password</label>
-            <input style="border-radius: 10px;" type="password" name="password" id="inputPassword" class="form-control" required>
+        <div class="container" style="width: 500px; margin-top: 15%;">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <label for="inputUsername">{{ "Username" | trans }}</label>
+            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
+                   required autofocus>
+            <label for="inputPassword">{{ "Password" | trans }}</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <br>
 
-            <button type="submit" class="btn btn-primary" style="border-radius: 10px;">Sign in</button>
-            or
-            <a href="{{ path('register_user') }}"><button type="button" class="btn btn-danger" style="border-radius: 10px;">Register</button></a>
+            <button type="submit" class="btn btn-primary">{{ "Sign in" | trans }}</button>
+            {{ "or" | trans }}
+            <a href="{{ path('register_user') }}">
+                <button type="button" class="btn btn-danger">
+                    {{ "Register" | trans }}</button>
+            </a>
         </div>
 
 
-</form>
+    </form>
 {% endblock %}

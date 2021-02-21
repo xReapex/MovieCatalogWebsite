@@ -5,10 +5,6 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Repository\AdminRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use Psr\Container\ContainerInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use App\Entity\User;
-use App\Form\CommentFormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,22 +18,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Twig\Environment;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\UserRepository;
-use Symfony\Component\Notifier\Notification\Notification;
 use Symfony\Component\Notifier\NotifierInterface;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class HomeController extends AbstractController
 {
     private $twig;
-    private $repository;
     private $adminRepository;
 
-    public function __construct(Environment $twig, UserRepository $repository, AdminRepository $adminRepository)
+    public function __construct(Environment $twig, AdminRepository $adminRepository)
     {
         $this->twig = $twig;
-        $this->repository = $repository;
         $this->adminRepository = $adminRepository;
     }
 

@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="u3I07BJ" resname="Register">
         <source>Register</source>
-        <target>Enregistrer</target>
+        <target>S'enregistrer</target>
       </trans-unit>
       <trans-unit id="byAvVKe" resname="List">
         <source>List</source>
@@ -164,6 +164,30 @@
       <trans-unit id="2T8djiy" resname="Login for more.">
         <source>Login for more.</source>
         <target>Connection requise</target>
+      </trans-unit>
+      <trans-unit id="n7Q6XOl" resname="Search movies">
+        <source>Search movies</source>
+        <target>Chercher des films</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Pseudo</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="cXVRejc" resname="or">
+        <source>or</source>
+        <target>ou</target>
+      </trans-unit>
+      <trans-unit id="EDRROVB" resname="Catalogue">
+        <source>Catalogue</source>
+        <target>__Catalogue</target>
       </trans-unit>
     </body>
   </file>

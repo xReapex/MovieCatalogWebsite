@@ -21,9 +21,9 @@
                             <br><b>{{ "Vote" | trans }}</b> : {{ film['vote_count'] }} <i class="fas fa-poll"></i><br><b>{{ "Rating" | trans}}</b> : {{ film['vote_average'] | raw}}</p>
 
                         {% if is_granted('ROLE_USER') %}
-                            <a href="{{ path('film.discover.id', {id: film['id']}) }}" type="button" class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="border-radius: 10px;">{{ "Learn More" | trans }}</a>
+                            <a href="{{ path('film.discover.id', {id: film['id']}) }}" type="button" class="btn btn-primary btn-lg readmorebutton" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="border-radius: 10px;">{{ "Learn More" | trans }}</a>
                         {% else %}
-                            <a href="{{ path('film.discover.id', {id: film['id']}) }}" type="button" class="btn btn-primary btn-lg disabled" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="border-radius: 10px;">{{ "Login for more" | trans }}</a>
+                            <a href="{{ path('film.discover.id', {id: film['id']}) }}" type="button" class="btn btn-primary btn-lg disabled readmorebutton" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="border-radius: 10px;">{{ "Login for more" | trans }}</a>
                         {% endif %}
 
                     </div>

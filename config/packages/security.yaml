@@ -3,12 +3,8 @@ security:
     #enable_authenticator_manager: true
 
     encoders:
-        App\Entity\User:
-            algorithm: bcrypt
         App\Entity\Admin:
             algorithm: auto
-
-
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:

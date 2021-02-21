@@ -1,3 +1,33 @@
 body {
-    background-color: lightgray;
+    background-color: #292841;
+    color: whitesmoke;
+}
+
+.readmorebutton
+{
+    background-color: #1b1b1b;
+}
+
+.underline-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width .3s;
+}
+
+.underline-link:hover::after{
+    width: 100%;
+    transition: width .3s;
+}
+.navbar .dropdown-item:hover {
+    background-color: transparent;
+}
+
+.centre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
 }
