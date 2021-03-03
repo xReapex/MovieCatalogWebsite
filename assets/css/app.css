@@ -31,3 +31,12 @@ body {
     align-items: center;
     height: 90vh;
 }
+
+.jumbotron{
+    background-color: #4F628E;
+}
+
+.btn-primary{
+    background-color: #615192;
+    border-color: #615192;
+}
