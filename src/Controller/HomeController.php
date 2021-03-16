@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Repository\AdminRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -80,7 +81,14 @@ class HomeController extends AbstractController
         $form
             ->add('Username', TextType::class)
             ->add('Email', EmailType::class)
-            ->add('Password', PasswordType::class)
+            ->add('Password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe doivent être identiques.',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
+                'first_options'  => ['label' => 'Mot de passe :'],
+                'second_options' => ['label' => 'Répéter le mot de passe :'],
+            ])
             ->add('Submit', SubmitType::class);
 
         if ($request->isMethod('POST')) {
