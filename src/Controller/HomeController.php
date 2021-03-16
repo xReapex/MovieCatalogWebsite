@@ -20,6 +20,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Twig\Environment;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Notifier\NotifierInterface;
+use function MongoDB\BSON\toJSON;
 
 class HomeController extends AbstractController
 {
@@ -52,10 +53,11 @@ class HomeController extends AbstractController
      * @Route("/{_locale<%app.supported_locales%>}/home",  name="homepage")
      * @return Response
      */
-    public function showHome()
+    public function showHome(AdminRepository $adminRepository, EntityManagerInterface $manager)
     {
         if ($this->getUser() !== null){
             $username = $this->getUser()->getUsername();
+
             return $this->render('home/home.html.twig', [
                 'username' => $username
             ]);

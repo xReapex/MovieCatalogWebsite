@@ -45,6 +45,11 @@ class Admin implements UserInterface
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="simple_array", nullable=true)
+     */
+    private $favoritesId = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -131,6 +136,18 @@ class Admin implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getFavoritesId(): ?array
+    {
+        return $this->favoritesId;
+    }
+
+    public function setFavoritesId(?array $favoritesId): self
+    {
+        $this->favoritesId = $favoritesId;
 
         return $this;
     }
