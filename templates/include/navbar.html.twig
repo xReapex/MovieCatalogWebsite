@@ -67,6 +67,8 @@
                     <a style="border-radius: 10px;" class="dropdown-item disabled" href="#"><i class="fas fa-at"></i> E-mail : {{ app.user.email }}</a>
                     <div class="dropdown-divider"></div>
                     <a style="border-radius: 10px;" class="dropdown-item disabled" href="#"><i class="fas fa-user-tag"></i> Role : {{ app.user.roles[0] | slice(5) | lower}}</a>
+                    <div class="dropdown-divider"></div>
+                    <a style="border-radius: 10px;" class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i>{{ "Logout" | trans }}</a>
                 </div>
             </li>
 
