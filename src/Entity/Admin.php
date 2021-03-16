@@ -4,13 +4,17 @@ namespace App\Entity;
 
 use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ApiResource
  * @ORM\Entity(repositoryClass=AdminRepository::class)
+ * @UniqueEntity("email", message="Cet email est déjà utilisé.")
+ * @UniqueEntity("username", message="Ce pseudo n'est pas disponible.")
  */
+
 class Admin implements UserInterface
 {
     /**
