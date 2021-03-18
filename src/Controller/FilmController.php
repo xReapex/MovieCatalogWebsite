@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Film;
-use App\Repository\FilmRepository;
 use App\Service\FilmManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpClient\HttpClient;

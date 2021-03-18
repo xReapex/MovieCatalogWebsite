@@ -4,11 +4,13 @@ namespace App\Repository;
 
 use App\Entity\Admin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -20,9 +22,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class AdminRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    private $manager;
+    private $security;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager, Security $security)
     {
         parent::__construct($registry, Admin::class);
+        $this->manager = $manager;
+        $this->security = $security;
     }
 
     /**
@@ -80,6 +87,16 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
             ->setMaxResults(3)
             ->addOrderBy('p.id', 'ASC')
             ->getQuery();
+    }
+
+    public function setFavoriteIdById($id)
+    {
+        $user = $this->find($this->security->getUser()->getId());
+        $array = $user->getFavoritesId();
+        array_push($array, $id);
+        $user->setFavoritesId($array);
+        $this->manager->persist($user);
+        $this->manager->flush();
     }
 
 }
