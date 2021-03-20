@@ -2,10 +2,9 @@
 
 {% block body %}
 
-    <br><center><h2 class="mt-3">{{ "Find movies by genre !" }}</h2></center></br>
-
     <center>
-        <div class="container" style="margin-bottom: 3%; ">
+        <div class="container" style="margin-top: 7%; ">
+            <br><center><h2 class="mt-3">{{ "Find movies by genre !" | trans }}</h2></center><br>
             <div class="row">
                 {% for genre in genres %}
                     <div class="col-md-3 mt-2">

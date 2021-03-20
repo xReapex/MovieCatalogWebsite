@@ -209,6 +209,10 @@
         <source>Spoken languages</source>
         <target>Langages parlés</target>
       </trans-unit>
+      <trans-unit id="F_0Ozof" resname="Find movies by genre !">
+        <source>Find movies by genre !</source>
+        <target>Trouver des films par genre !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
