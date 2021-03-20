@@ -56,8 +56,6 @@ class HomeController extends AbstractController
         if ($this->getUser() !== null){
             $username = $this->getUser()->getUsername();
 
-            $adminRepository->setFavoriteIdById('92');
-
             return $this->render('home/home.html.twig', [
                 'username' => $username
             ]);

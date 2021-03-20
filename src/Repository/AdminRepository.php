@@ -99,4 +99,33 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
         $this->manager->flush();
     }
 
+    public function removeFavoriteId($id)
+    {
+        // get favorites
+        $user = $this->find($this->security->getUser()->getId());
+        $currentFavorites = $user->getFavoritesId();
+
+        // remove id
+        if (($key = array_search($id, $currentFavorites)) !== false) {
+            unset($currentFavorites[$key]);
+        }
+
+        // push user
+        $user->setFavoritesId($currentFavorites);
+        $this->manager->persist($user);
+        $this->manager->flush();
+    }
+
+    public function isUserFavoriteIdExists($id)
+    {
+        $user = $this->find($this->security->getUser()->getId());
+        $currentFavorites = $user->getFavoritesId();
+
+        if (in_array($id, $currentFavorites))
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

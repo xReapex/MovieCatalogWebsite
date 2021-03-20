@@ -2,13 +2,10 @@
 
 namespace App\Service;
 
-use http\Url;
-use League\Uri\Http;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
-use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -22,7 +19,7 @@ class FilmManager
     private $baseUrl;
     protected $requestStack;
 
-    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig, RequestStack $requestStack)
+    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig, RequestStack $requestStack, Security $security)
     {
 
         $this->api_key = $apiKey;
