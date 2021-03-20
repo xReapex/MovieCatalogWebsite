@@ -189,6 +189,26 @@
         <source>Catalogue</source>
         <target>Catalog</target>
       </trans-unit>
+      <trans-unit id="8z3uqbE" resname="Released">
+        <source>Released</source>
+        <target>Disponible</target>
+      </trans-unit>
+      <trans-unit id="pXworLq" resname="In coming">
+        <source>In coming</source>
+        <target>Prochainnement</target>
+      </trans-unit>
+      <trans-unit id="vYSSTK2" resname="Release date">
+        <source>Release date</source>
+        <target>Date de sortie</target>
+      </trans-unit>
+      <trans-unit id="TIsCoNx" resname="Produced by">
+        <source>Produced by</source>
+        <target>Produit par</target>
+      </trans-unit>
+      <trans-unit id="ITdYZAk" resname="Spoken languages">
+        <source>Spoken languages</source>
+        <target>Langages parlés</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

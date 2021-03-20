@@ -52,6 +52,8 @@ class FilmController extends AbstractController
         }else{
 
             return $this->render('film/id.html.twig', [
+                "id" => $id,
+                "favorite" => $films->isFavoriteIcon($id),
                 "film" => $res->toArray()
             ]);
         }

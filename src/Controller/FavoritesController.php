@@ -17,7 +17,7 @@ class FavoritesController extends AbstractController
     }
 
     /**
-     * @Route("/add_favorite/{id}", name="app.add_favorite")
+     * @Route("/{_locale<%app.supported_locales%>}/add_favorite/{id}", name="app.add_favorite")
      * @param $id
      */
     public function addFavorite($id)
@@ -35,6 +35,9 @@ class FavoritesController extends AbstractController
             // remove id
             $this->adminRepository->removeFavoriteId($id);
         }
+        return $this->redirectToRoute('film.discover.id', [
+            'id' => $id
+        ]);
     }
 
     public function showFavoritesPage()

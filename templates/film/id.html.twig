@@ -8,15 +8,15 @@
             justify-content: center;
             align-items: center;
             height: 80vh;
-            margin-top: 10%;
+            margin-top: 2%;
             margin-bottom: 7%;
         }
 
     </style>
 
 <div class="container">
-    <div class="jumbotron" style="border-radius: 10px;">
-        <h1 class="display-3">{{film['title']}}</h1>
+    <div class="jumbotron" style="border-radius: 10px; margin: 0 auto">
+        <h1 class="display-3">{{film['title']}} <a href="{{ path('app.add_favorite', {'id': id })}}">{{ favorite | raw }}</a></h1>
 
         <p class="lead">{{ film['overview'] }}</p>
         <hr class="my-4">
@@ -24,19 +24,19 @@
             <b>Status : </b>
 
             {% if film['status'] == "Released"%}
-                <span class="badge badge-pill badge-success">Released</span>
+                <span class="badge badge-pill badge-success">{{ "Released" | trans }}</span>
                 {% else %}
-                    <span class="badge badge-pill badge-warning">In coming</span>
+                    <span class="badge badge-pill badge-warning">{{ "In coming" | trans }}</span>
             {% endif %}
 
             <br>
-            <b>Release date : {{ film['release_date'] }}</b>
+            <b>{{ "Release date" | trans }} : {{ film['release_date'] }}</b>
             <br>
-            <b>Produced by :</b>
+            <b>{{ "Produced by" | trans }} :</b>
             {% for prod in film['production_companies'] %}
                 {{ prod['name'] }} ({{ prod['origin_country'] }}).
             {% endfor %}<br>
-            <b>Spoken languages </b>:
+            <b>{{ "Spoken languages" | trans }} </b>:
 
             {% for lang in film['spoken_languages'] %}
                 {{ lang['name'] }} ({{ lang['iso_639_1'] }}).
@@ -44,7 +44,7 @@
 
         </p>
         <p class="lead">
-            <a style="border-radius: 10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="history.back(-1)">{{ "Back" | trans }}</a>
+            <a style="border-radius: 10px;" class="btn btn-primary btn-lg" role="button" href="{{ path('film.discover') }}">{{ "Back" | trans }}</a>
         </p>
     </div>
 </div>

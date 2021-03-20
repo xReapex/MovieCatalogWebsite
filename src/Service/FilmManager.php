@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Repository\AdminRepository;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Security\Core\Security;
@@ -18,8 +19,9 @@ class FilmManager
     private $api_key;
     private $baseUrl;
     protected $requestStack;
+    private $adminRepository;
 
-    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig, RequestStack $requestStack, Security $security)
+    public function __construct(ContainerBagInterface $params, string $apiKey, string $baseUrl, Environment $twig, RequestStack $requestStack, Security $security, AdminRepository $adminRepository)
     {
 
         $this->api_key = $apiKey;
@@ -28,7 +30,7 @@ class FilmManager
         $this->baseUrl = $baseUrl;
         $this->twig = $twig;
         $this->requestStack = $requestStack;
-
+        $this->adminRepository = $adminRepository;
     }
 
     private function getData()
@@ -197,6 +199,20 @@ class FilmManager
     {
         $response = $this->http->request('GET', "https://api.themoviedb.org/3/discover/movie?api_key=$this->api_key&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=$genre");
         return $response->toArray();
+    }
+
+    public function isFavoriteIcon($id)
+    {
+        $exists = $this->adminRepository->isUserFavoriteIdExists($id);
+
+        if ($exists)
+        {
+            // if true
+            return "<i class=\"text-warning fas fa-star\"></i>";
+        }
+        else{
+            return "<i class=\"text-warning far fa-star\"></i>";
+        }
     }
 
 }
