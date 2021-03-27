@@ -9,3 +9,5 @@ yarn-error.log
 .env.test
 .gitignore
 ###< symfony/webpack-encore-bundle ###
+
+/tests
