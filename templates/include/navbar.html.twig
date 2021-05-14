@@ -20,6 +20,9 @@
                     <a style="border-radius: 10px;"class="dropdown-item" href="{{ path('show.genres') }}"><i class="fas fa-list-ul"></i> Themes</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app.show_favortites') }}"><i class="fas fa-bookmark"></i> {{ 'Favorites' | trans }}</a>
+            </li>
         </ul>
         {% else %}
             <ul class="navbar-nav mr-auto">

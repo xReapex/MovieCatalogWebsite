@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\AdminRepository;
+use App\Service\FilmManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -40,9 +41,33 @@ class FavoritesController extends AbstractController
         ]);
     }
 
-    public function showFavoritesPage()
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/favorites", name="app.show_favortites")
+     */
+    public function showFavoritesPage(AdminRepository $adminRepository, FilmManager $filmManager)
     {
-        $this->render('favorites/favorites.html.twig');
+        $ids = [];
+        $fav = $adminRepository->getFavoritesByUserID();
+
+        foreach ($fav as $id)
+        {
+            array_push($ids, $filmManager->getMovieById($id)->toArray());
+        }
+
+        return $this->render('favorites/favorites.html.twig', [
+            'favorites' => $ids
+        ]);
     }
 
+    /**
+     * @Route("/{_locale<%app.supported_locales%>}/remove/{id}", name="app.remove_favorite")
+     */
+    public function removeFavorite($id, AdminRepository $adminRepository)
+    {
+        if ($adminRepository->isUserFavoriteIdExists($id))
+        {
+            $adminRepository->removeFavoriteId($id);
+        }
+        return $this->redirectToRoute('app.show_favortites');
+    }
 }

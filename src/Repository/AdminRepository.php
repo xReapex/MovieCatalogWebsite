@@ -128,4 +128,10 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
         return false;
     }
 
+    public function getFavoritesByUserID()
+    {
+        $user = $this->find($this->security->getUser()->getId());
+        $currentFavorites = $user->getFavoritesId();
+        return $currentFavorites;
+    }
 }

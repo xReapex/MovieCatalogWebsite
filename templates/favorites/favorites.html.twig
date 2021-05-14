@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Favorites{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for fav in favorites %}
+            <div class="col-md-4">
+                <div class="card" style="background-color: #4F628E; border-color: transparent; border-radius: 20px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ fav.title }}</h5>
+                        <p class="card-text">
+                            {{ fav.overview | u.truncate(100)}}...
+                        </p>
+                        <a href="{{ path('film.discover.id', { id: fav.id }) }}" type="button" class="btn btn-primary">{{ "Show movie"|trans }}</a>
+                        <a href="{{ path('app.remove_favorite', { id: fav.id }) }}" type="button" class="btn btn-danger">{{ "Remove favorite"|trans }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
